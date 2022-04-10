@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<?import java.lang.Integer?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.addAppointment">
+   <children>
+      <Pane layoutX="22.0" layoutY="64.0" prefHeight="381.0" prefWidth="756.0" style="-fx-border-color: grey; -fx-border-width: 3;">
+         <children>
+            <RadioButton fx:id="newPatientRadio" layoutX="34.0" layoutY="30.0" mnemonicParsing="false" selected="true" text="New Patient" />
+            <RadioButton  fx:id="existPatientRadio" layoutX="191.0" layoutY="30.0" mnemonicParsing="false" text="Existing Patient" />
+            <Pane layoutX="14.0" layoutY="60.0" prefHeight="304.0" prefWidth="314.0" style="-fx-border-color: grey; -fx-border-width: 3;">
+               <children>
+                  <Pane fx:id="existPatientPanel" prefHeight="304.0" prefWidth="314.0" style="-fx-border-color: grey; -fx-border-width: 3;" visible="false">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Patient">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="existPatientTable" layoutX="4.0" layoutY="38.0" prefHeight="260.0" prefWidth="303.0">
+                          <columns>
+                            <TableColumn fx:id="patientIDCol" prefWidth="47.0" text="ID" />
+                              <TableColumn  fx:id="patientNameCol" prefWidth="162.0" text="Patient Name" />
+                              <TableColumn  fx:id="patientDOBCol" prefWidth="98.0" text="DOB" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="90.0" layoutY="12.0" prefHeight="25.0" prefWidth="216.0" promptText="Search By ID or Name" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="newPatientPanel" prefHeight="304.0" prefWidth="314.0" style="-fx-border-color: grey; -fx-border-width: 3;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Patient">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <GridPane layoutX="57.0" layoutY="61.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="88.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="112.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <DatePicker fx:id="DOBField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="patientNameField" GridPane.columnIndex="1" />
+                              <TextField fx:id="phonenumberField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Patient Name" />
+                              <Label text="DOB" GridPane.rowIndex="1" />
+                              <Label text="Phone Number" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="342.0" layoutY="60.0" prefHeight="304.0" prefWidth="400.0" style="-fx-border-color: grey; -fx-border-width: 3;">
+               <children>
+                  <Label layoutX="10.0" layoutY="29.0" text="Date" />
+                  <Label layoutX="11.0" layoutY="69.0" text="Time" />
+                  <Label layoutX="10.0" layoutY="101.0" text="Exam" />
+                  <Label layoutX="11.0" layoutY="132.0" text="Procedure" />
+                  <Label layoutX="9.0" layoutY="166.0" text="Clinic" />
+                  <DatePicker fx:id="appointmentDateField" layoutX="80.0" layoutY="34.0" />
+
+                      <ComboBox fx:id="hourField" layoutX="80.0" layoutY="65.0" prefHeight="25.0" prefWidth="81.0" />
+                      <ComboBox fx:id="minField"  layoutX="180.0" layoutY="65.0" prefHeight="25.0" prefWidth="81.0" />
+                      <ComboBox fx:id="AMBOX" layoutX="285.0" layoutY="65.0" prefHeight="25.0" prefWidth="62.0" />
+
+
+
+                  <ComboBox fx:id="ExamField" onAction="#ExamTypeFilter" layoutX="80.0" layoutY="97.0" prefWidth="150.0" />
+                  <ComboBox  fx:id="procedureField" layoutX="80.0" layoutY="128.0" prefWidth="150.0" />
+                  <ComboBox fx:id="clinicField" layoutX="80.0" layoutY="162.0" prefWidth="150.0" />
+                  <Button  fx:id="saveBtn" layoutX="141.0" layoutY="227.0" mnemonicParsing="false" text="Save" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Button fx:id="backBtn" layoutX="26.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
+      <Label layoutX="26.0" layoutY="39.0" text="Add Appointment">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
