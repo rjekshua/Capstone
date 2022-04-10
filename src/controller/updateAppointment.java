@@ -41,9 +41,9 @@ public class updateAppointment implements Initializable {
     public Button saveBtn;
     public Button backBtn;
     public Label patientInfoBar;
-    private ObservableList hourList = FXCollections.observableArrayList();
-    private ObservableList minList = FXCollections.observableArrayList();
-    private ObservableList AMPMList = FXCollections.observableArrayList();
+    private final ObservableList hourList = FXCollections.observableArrayList();
+    private final ObservableList minList = FXCollections.observableArrayList();
+    private final ObservableList AMPMList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int id = mainScreen.appointmentSelected.getId();
@@ -162,7 +162,7 @@ public class updateAppointment implements Initializable {
         try {
             String Date = String.valueOf(appointmentDateField.getValue());
             int timeHour = (int) hourField.getValue();
-            int timeMin = (int) minToInt(String.valueOf(minField.getValue()));
+            int timeMin = minToInt(String.valueOf(minField.getValue()));
             String AM = (String) AMBOX.getValue();
             int adjustedTime = hour24(AM, timeHour);
             procedure selectedProcedure = (procedure) procedureField.getSelectionModel().getSelectedItem();

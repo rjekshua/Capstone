@@ -91,13 +91,7 @@ public class login implements Initializable {
         String userFinder = "SELECT password From icms.user where iduser like " + user;
         ResultSet result = sqlStatement.executeQuery(userFinder);
         if(result.next() == true ){
-            if (result.getString("password").equals(password)) {
-
-                check = true;
-            }
-            else {
-                check = false;
-            }
+            check = result.getString("password").equals(password);
         }
         else{
             check = false;
